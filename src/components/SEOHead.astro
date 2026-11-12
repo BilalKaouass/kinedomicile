@@ -2,16 +2,51 @@
 ---
 import { site } from "../data/site";
 
+const baseUrl = site.url.replace(/\/$/, "");
+
 const schema = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "MedicalBusiness",
+  "@id": `${baseUrl}/#organization`,
+
   name: site.name,
-  url: site.url,
-  telephone: site.phoneDisplay,
+  url: baseUrl,
+
+  description:
+    "Kinésithérapie à domicile dans le Grand Charleroi. " +
+    "Soins généraux, respiratoires, neurologiques, " +
+    "gériatriques et rééducation post-opératoire.",
+
+  telephone: site.phone,
   email: site.email,
+
   areaServed: {
-    "@type": "Place",
+    "@type": "AdministrativeArea",
     name: "Grand Charleroi, Belgique",
+  },
+
+  availableLanguage: ["fr"],
+
+  employee: [
+    {
+      "@type": "Person",
+      name: "Youssef Agharbi",
+      jobTitle: "Kinésithérapeute",
+      url: `${baseUrl}/equipe/youssef-agharbi/`,
+    },
+    {
+      "@type": "Person",
+      name: "Ebtissem Chabani",
+      jobTitle: "Kinésithérapeute",
+      url: `${baseUrl}/equipe/ebtissem-chabani/`,
+    },
+  ],
+
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: site.phone,
+    contactType: "Prise de rendez-vous",
+    availableLanguage: "French",
   },
 };
 ---
