@@ -1,0 +1,74 @@
+
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { site } from "../../data/site";
+---
+
+<BaseLayout
+  title="Youssef Agharbi | Kiné à domicile à Charleroi"
+  description="Découvrez Youssef Agharbi, kinésithérapeute diplômé et conventionné, prenant en charge les hommes et les femmes à domicile dans le Grand Charleroi."
+>
+
+  <section class="section">
+    <div class="container practitioner-detail">
+
+      <div class="practitioner-detail-image">
+        <img
+          src="/images/youssef-agharbi.webp"
+          alt="Youssef Agharbi, kinésithérapeute à domicile"
+          width="600"
+          height="700"
+        />
+      </div>
+
+      <div class="practitioner-detail-content">
+
+        <span class="eyebrow">
+          Votre kinésithérapeute
+        </span>
+
+        <h1>
+          Youssef Agharbi
+        </h1>
+
+        <p class="lead">
+          Kinésithérapeute diplômé et conventionné,
+          il prend en charge les hommes et les femmes
+          à domicile dans le Grand Charleroi.
+        </p>
+
+        <h2>
+          Ses prises en charge
+        </h2>
+
+        <ul>
+          <li>Kinésithérapie générale</li>
+          <li>Rééducation post-opératoire</li>
+          <li>Kinésithérapie respiratoire</li>
+          <li>Kinésithérapie neurologique</li>
+          <li>Kinésithérapie gériatrique</li>
+        </ul>
+
+        <p>
+          Les soins sont réalisés selon les besoins
+          du patient, les indications médicales
+          et les compétences du praticien.
+        </p>
+
+        <a href="/contact/" class="btn-primary">
+          Demander un rendez-vous
+        </a>
+
+        <a
+          href={`tel:${site.phone}`}
+          class="btn-secondary"
+        >
+          Appeler {site.phoneDisplay}
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
+</BaseLayout>

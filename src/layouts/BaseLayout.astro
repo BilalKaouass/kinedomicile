@@ -1,0 +1,88 @@
+
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import SEOHead from "../components/SEOHead.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+}
+
+const {
+  title,
+  description,
+  canonical,
+} = Astro.props;
+
+const pageUrl = canonical
+  ? new URL(canonical, Astro.site).href
+  : Astro.url.href;
+---
+
+<!doctype html>
+<html lang="fr-BE">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+
+    <meta
+      name="description"
+      content={description}
+    />
+
+    <link
+      rel="canonical"
+      href={pageUrl}
+    />
+
+    <meta
+      property="og:title"
+      content={title}
+    />
+
+    <meta
+      property="og:description"
+      content={description}
+    />
+
+    <meta
+      property="og:type"
+      content="website"
+    />
+
+    <meta
+      property="og:url"
+      content={pageUrl}
+    />
+
+    <meta
+      property="og:locale"
+      content="fr_BE"
+    />
+
+    <title>{title}</title>
+
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/favicon.svg"
+    />
+  </head>
+<SEOHead />
+  <body>
+  <Header />
+
+  <main>
+    <slot />
+  </main>
+
+  <Footer />
+</body>
+</html>

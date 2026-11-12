@@ -1,0 +1,73 @@
+
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { services } from "../../data/services";
+import { site } from "../../data/site";
+
+export function getStaticPaths() {
+  return services.map((service) => ({
+    params: {
+      slug: service.slug,
+    },
+    props: {
+      service,
+    },
+  }));
+}
+
+const { service } = Astro.props;
+---
+
+<BaseLayout
+  title={`${service.title} à domicile à Charleroi | Kinedomicile.be`}
+  description={`${service.description} Découvrez notre service de ${service.title.toLowerCase()} à domicile dans le Grand Charleroi.`}
+>
+
+  <section class="section">
+
+    <div class="container service-detail">
+
+      <span class="eyebrow">
+        Nos soins
+      </span>
+
+      <h1>
+        {service.title} à domicile à Charleroi
+      </h1>
+
+      <p class="lead">
+        {service.description}
+      </p>
+
+      <p>
+        Nos kinésithérapeutes se déplacent à domicile
+        dans le Grand Charleroi pour accompagner
+        les patients dans leur prise en charge.
+      </p>
+
+      <p>
+        La prise en charge est adaptée aux besoins
+        du patient, aux indications médicales
+        et aux compétences du praticien.
+      </p>
+
+      <div class="service-contact">
+
+        <a href="/contact/" class="btn-primary">
+          Demander un rendez-vous
+        </a>
+
+        <a
+          href={`tel:${site.phone}`}
+          class="btn-secondary"
+        >
+          Appeler {site.phoneDisplay}
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</BaseLayout>

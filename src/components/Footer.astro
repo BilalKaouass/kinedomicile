@@ -1,0 +1,92 @@
+
+---
+import { site } from "../data/site";
+---
+
+<footer class="site-footer">
+  <div class="container">
+
+    <div class="footer-main">
+
+      <div class="footer-brand">
+        <a href="/" class="brand brand-footer">
+          <span class="brand-mark" aria-hidden="true">
+            <svg
+              viewBox="0 0 48 48"
+              width="42"
+              height="42"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="24"
+                cy="24"
+                r="21"
+                stroke="currentColor"
+                stroke-width="1.5"
+              />
+              <path
+                d="M24 9V39M14 19H34M17 29H31"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <circle cx="24" cy="12" r="3" fill="currentColor" />
+            </svg>
+          </span>
+
+          <span class="brand-text">
+            <strong>Kinedomicile</strong>
+            <span>Kinésithérapie à domicile</span>
+          </span>
+        </a>
+
+        <p>
+          Des soins de kinésithérapie à domicile
+          dans le Grand Charleroi.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h2>Navigation</h2>
+        <a href="/#equipe">Notre équipe</a>
+        <a href="/#soins">Nos soins</a>
+        <a href="/#zones">Zones d'intervention</a>
+        <a href="/contact/">Contact</a>
+      </div>
+
+      <div class="footer-column">
+        <h2>Contact</h2>
+
+        <a href={`tel:${site.phone}`}>
+          {site.phoneDisplay}
+        </a>
+
+        <a href={`mailto:${site.email}`}>
+          {site.email}
+        </a>
+
+        <span>Grand Charleroi</span>
+        <span>Lundi au samedi, 8h–20h</span>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>
+        © {new Date().getFullYear()} Kinedomicile.be
+      </p>
+
+      <div class="footer-legal">
+        <a href="/mentions-legales/">
+          Mentions légales
+        </a>
+
+        <a href="/confidentialite/">
+          Confidentialité
+        </a>
+      </div>
+    </div>
+
+  </div>
+</footer>

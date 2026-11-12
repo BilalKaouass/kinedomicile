@@ -1,11 +1,332 @@
----
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { practitioners } from "../data/practitioners";
+import { services } from "../data/services";
+import { site } from "../data/site";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout
+  title="Kiné à domicile à Charleroi | Kinedomicile.be"
+  description="Besoin d'un kiné à domicile à Charleroi ? Youssef Agharbi et Ebtissem Chabani, kinésithérapeutes diplômés et conventionnés, se déplacent dans le Grand Charleroi."
+>
+
+  <!-- HERO -->
+
+  <section class="hero">
+    <div class="container hero-grid">
+
+      <div class="hero-content">
+
+        <span class="eyebrow">
+          Kinésithérapie à domicile · Grand Charleroi
+        </span>
+
+        <h1>
+          Vos soins, chez vous.
+          <span>Votre mobilité, notre priorité.</span>
+        </h1>
+
+        <p class="hero-description">
+          Une équipe de kinésithérapeutes diplômés et conventionnés
+          qui se déplace à domicile dans le Grand Charleroi.
+        </p>
+
+        <div class="hero-actions">
+
+          <a href="/contact/" class="btn-primary">
+            Demander un rendez-vous
+          </a>
+
+          <a
+            href={`tel:${site.phone}`}
+            class="btn-secondary"
+          >
+            {site.phoneDisplay}
+          </a>
+
+        </div>
+
+        <div class="hero-trust">
+
+          <span>
+            <span class="trust-dot"></span>
+            Kinésithérapeutes diplômés
+          </span>
+
+          <span>
+            <span class="trust-dot"></span>
+            Conventionnés
+          </span>
+
+          <span>
+            <span class="trust-dot"></span>
+            Soins à domicile
+          </span>
+
+        </div>
+
+      </div>
+
+      <div class="hero-visual">
+
+        <div class="hero-image">
+          <img
+            src="/images/kinesitherapie-domicile.webp"
+            alt="Kinésithérapeute réalisant une séance de soins à domicile"
+            width="700"
+            height="850"
+            fetchpriority="high"
+          />
+        </div>
+
+        <div class="hero-card">
+
+          <span class="hero-card-icon">
+            ✦
+          </span>
+
+          <div>
+            <strong>Une équipe à votre écoute</strong>
+
+            <p>
+              Un accompagnement adapté à vos besoins.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- EQUIPE -->
+
+  <section class="section team-section" id="equipe">
+
+    <div class="container">
+
+      <div class="section-heading">
+
+        <span class="eyebrow">
+          Notre équipe
+        </span>
+
+        <h2>
+          Deux professionnels.
+          <br />
+          Une même attention.
+        </h2>
+
+        <p>
+          Découvrez notre équipe de kinésithérapeutes
+          et choisissez le praticien qui vous correspond.
+        </p>
+
+      </div>
+
+      <div class="practitioners-grid">
+
+        {practitioners.map((practitioner) => (
+
+          <article class="practitioner-card">
+
+            <div class="practitioner-image">
+
+              <img
+                src={practitioner.image}
+                alt={`Portrait de ${practitioner.name}, kinésithérapeute`}
+                width="600"
+                height="700"
+                loading="lazy"
+              />
+
+            </div>
+
+            <div class="practitioner-content">
+
+              <span class="eyebrow">
+                {practitioner.patients}
+              </span>
+
+              <h3>
+                {practitioner.name}
+              </h3>
+
+              <p>
+                {practitioner.description}
+              </p>
+
+              <a
+                href={`/equipe/${practitioner.slug}/`}
+                class="text-link"
+              >
+                Découvrir le praticien
+                <span aria-hidden="true">→</span>
+              </a>
+
+            </div>
+
+          </article>
+
+        ))}
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SOINS -->
+
+  <section class="section services-section" id="soins">
+
+    <div class="container">
+
+      <div class="section-heading">
+
+        <span class="eyebrow">
+          Nos prises en charge
+        </span>
+
+        <h2>
+          Des soins adaptés
+          à vos besoins
+        </h2>
+
+        <p>
+          Nos kinésithérapeutes vous accompagnent
+          dans votre parcours de rééducation à domicile.
+        </p>
+
+      </div>
+
+      <div class="services-grid">
+
+        {services.map((service, index) => (
+
+          <article class="service-card">
+
+            <span class="service-number">
+              0{index + 1}
+            </span>
+
+            <h3>
+              {service.title}
+            </h3>
+
+            <p>
+              {service.description}
+            </p>
+
+            <a
+              href={`/soins/${service.slug}/`}
+              class="text-link"
+            >
+              En savoir plus
+              <span aria-hidden="true">→</span>
+            </a>
+
+          </article>
+
+        ))}
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ZONES -->
+
+  <section class="section areas-section" id="zones">
+
+    <div class="container areas-grid">
+
+      <div>
+
+        <span class="eyebrow">
+          Nos déplacements
+        </span>
+
+        <h2>
+          Votre kiné à domicile
+          dans le Grand Charleroi
+        </h2>
+
+        <p>
+          Nos kinésithérapeutes se déplacent à domicile
+          dans les communes du Grand Charleroi.
+          Contactez-nous pour vérifier la disponibilité
+          dans votre commune.
+        </p>
+
+        <a href="/contact/" class="btn-primary">
+          Vérifier ma commune
+        </a>
+
+      </div>
+
+      <div class="areas-list">
+
+        <span>Charleroi</span>
+        <span>Marcinelle</span>
+        <span>Jumet</span>
+        <span>Gosselies</span>
+        <span>Gilly</span>
+        <span>Mont-sur-Marchienne</span>
+        <span>Montignies-sur-Sambre</span>
+        <span>Couillet</span>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- RENDEZ-VOUS -->
+
+  <section class="section appointment-section">
+
+    <div class="container appointment-content">
+
+      <span class="eyebrow">
+        Prise de rendez-vous
+      </span>
+
+      <h2>
+        Un besoin de kinésithérapie à domicile ?
+      </h2>
+
+      <p>
+        Contactez notre équipe pour organiser
+        une prise en charge dans le Grand Charleroi.
+      </p>
+
+      <div class="appointment-actions">
+
+        <a href="/contact/" class="btn-primary">
+          Faire une demande
+        </a>
+
+        <a
+          href={`https://wa.me/${site.phone.replace("+", "")}`}
+          class="btn-secondary"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Nous contacter sur WhatsApp
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</BaseLayout>

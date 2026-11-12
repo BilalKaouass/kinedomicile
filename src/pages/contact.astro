@@ -1,0 +1,318 @@
+
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout
+  title="Prendre rendez-vous | Kiné à domicile Charleroi"
+  description="Demandez un rendez-vous avec Youssef Agharbi ou Ebtissem Chabani pour une séance de kinésithérapie à domicile dans le Grand Charleroi."
+>
+
+  <section class="section contact-section">
+
+    <div class="container contact-grid">
+
+      <div class="contact-info">
+
+        <span class="eyebrow">
+          Prise de rendez-vous
+        </span>
+
+        <h1>
+          Organisons votre prise en charge
+        </h1>
+
+        <p>
+          Remplissez le formulaire et notre équipe
+          vous recontactera pour discuter de votre
+          demande et confirmer les disponibilités.
+        </p>
+
+        <div class="contact-info-item">
+
+          <span>Téléphone</span>
+
+          <a href={`tel:${site.phone}`}>
+            {site.phoneDisplay}
+          </a>
+
+        </div>
+
+        <div class="contact-info-item">
+
+          <span>Email</span>
+
+          <a href={`mailto:${site.email}`}>
+            {site.email}
+          </a>
+
+        </div>
+
+        <div class="contact-info-item">
+
+          <span>Disponibilités</span>
+
+          <strong>
+            Lundi au samedi · 8h à 20h
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div class="contact-form-wrapper">
+
+        <form
+  name="demande-rendez-vous"
+  method="POST"
+  action="https://formboost.app/f/i0z1q7z2"
+>
+
+<input
+  type="hidden"
+  name="_subject"
+  value="Nouvelle demande de rendez-vous - Kinedomicile"
+/>
+
+<input
+  type="text"
+  name="_honey"
+  tabindex="-1"
+  autocomplete="off"
+  aria-hidden="true"
+  class="honeypot"
+/>
+
+          <div class="form-field">
+
+            <label for="praticien">
+              Praticien souhaité
+            </label>
+
+            <select
+              id="praticien"
+              name="praticien"
+              required
+            >
+
+              <option value="">
+                Choisir un praticien
+              </option>
+
+              <option value="indifferent">
+                Indifférent
+              </option>
+
+              <option value="youssef">
+                Youssef Agharbi
+              </option>
+
+              <option value="ebtissem">
+                Ebtissem Chabani
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-field">
+
+            <label for="cause">
+              Cause de consultation
+            </label>
+
+            <select
+              id="cause"
+              name="cause"
+              required
+            >
+
+              <option value="">
+                Sélectionner une catégorie
+              </option>
+
+              <option value="generale">
+                Kinésithérapie générale
+              </option>
+
+              <option value="post-operatoire">
+                Rééducation post-opératoire
+              </option>
+
+              <option value="respiratoire">
+                Kinésithérapie respiratoire
+              </option>
+
+              <option value="neurologique">
+                Kinésithérapie neurologique
+              </option>
+
+              <option value="geriatrique">
+                Kinésithérapie gériatrique
+              </option>
+
+              <option value="autre">
+                Autre motif
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-field">
+
+            <label for="commune">
+              Commune
+            </label>
+
+            <input
+              id="commune"
+              name="commune"
+              type="text"
+              placeholder="Ex. : Charleroi"
+              required
+            />
+
+          </div>
+
+
+          <div class="form-field">
+
+            <label for="creneau">
+              Créneau souhaité
+            </label>
+
+            <select
+              id="creneau"
+              name="creneau"
+              required
+            >
+
+              <option value="">
+                Choisir un créneau
+              </option>
+
+              <option value="matin">
+                Matin · 8h à 12h
+              </option>
+
+              <option value="apres-midi">
+                Après-midi · 12h à 17h
+              </option>
+
+              <option value="fin-journee">
+                Fin de journée · 17h à 20h
+              </option>
+
+              <option value="indifferent">
+                Indifférent
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-field">
+
+            <label for="nom">
+              Nom et prénom
+            </label>
+
+            <input
+              id="nom"
+              name="nom"
+              type="text"
+              autocomplete="name"
+              required
+            />
+
+          </div>
+
+
+          <div class="form-field">
+
+            <label for="telephone">
+              Téléphone
+            </label>
+
+            <input
+              id="telephone"
+              name="telephone"
+              type="tel"
+              autocomplete="tel"
+              required
+            />
+
+          </div>
+
+
+          <div class="form-field">
+
+            <label for="message">
+              Message complémentaire (facultatif)
+            </label>
+
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              placeholder="Une précision pratique pour organiser votre rendez-vous..."
+            ></textarea>
+
+          </div>
+
+
+          <div class="form-consent">
+
+            <label>
+
+              <input
+                type="checkbox"
+                name="consentement"
+                value="oui"
+                required
+              />
+
+              <span>
+                J'accepte que mes coordonnées soient
+                utilisées pour répondre à ma demande
+                de rendez-vous.
+              </span>
+
+            </label>
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="btn-primary form-submit"
+          >
+            Envoyer ma demande
+          </button>
+
+          <p class="form-note">
+            Votre demande ne constitue pas une
+            confirmation de rendez-vous.
+          </p>
+
+<input
+  type="hidden"
+  name="_redirect"
+  value="https://kinedomicile.be/merci/"
+/>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</BaseLayout>

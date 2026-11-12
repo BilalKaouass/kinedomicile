@@ -1,0 +1,22 @@
+
+---
+import { site } from "../data/site";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: site.name,
+  url: site.url,
+  telephone: site.phoneDisplay,
+  email: site.email,
+  areaServed: {
+    "@type": "Place",
+    name: "Grand Charleroi, Belgique",
+  },
+};
+---
+
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify(schema)}
+/>
