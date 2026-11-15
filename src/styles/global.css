@@ -1470,3 +1470,21 @@ textarea {
     transition: none;
   }
 }
+
+
+/* Espacement des boutons sur les pages praticiens */
+
+.practitioner-detail .btn-primary + .btn-secondary,
+.practitioner-profile .btn-primary + .btn-secondary,
+.team-detail .btn-primary + .btn-secondary {
+  margin-left: 16px;
+}
+
+@media (max-width: 600px) {
+  .practitioner-detail .btn-primary + .btn-secondary,
+  .practitioner-profile .btn-primary + .btn-secondary,
+  .team-detail .btn-primary + .btn-secondary {
+    margin-left: 0;
+    margin-top: 12px;
+  }
+}
