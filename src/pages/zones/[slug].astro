@@ -6,81 +6,205 @@ import { site } from "../../data/site";
 
 export function getStaticPaths() {
   return areas.map((area) => ({
-    params: {
-      slug: area.slug,
-    },
-    props: {
-      area,
-    },
+    params: { slug: area.slug },
+    props: { area },
   }));
 }
 
 const { area } = Astro.props;
+
+const otherAreas = areas.filter(
+  (item) => item.slug !== area.slug
+);
+
+const treatments = [
+  {
+    title: "Kinésithérapie générale",
+    description:
+      "Des soins adaptés à vos besoins de mobilité, de rééducation et de récupération.",
+  },
+  {
+    title: "Rééducation post-opératoire",
+    description:
+      "Un accompagnement progressif après une intervention chirurgicale, selon les indications médicales.",
+  },
+  {
+    title: "Kinésithérapie respiratoire",
+    description:
+      "Une prise en charge respiratoire adaptée aux besoins du patient.",
+  },
+  {
+    title: "Kinésithérapie neurologique",
+    description:
+      "Un accompagnement de rééducation pour les personnes présentant des troubles neurologiques.",
+  },
+  {
+    title: "Kinésithérapie gériatrique",
+    description:
+      "Des soins visant à préserver la mobilité et l'autonomie des personnes âgées.",
+  },
+];
 ---
 
 <BaseLayout
   title={`Kiné à domicile à ${area.name} | Kinedomicile.be`}
-  description={`Besoin d'un kiné à domicile à ${area.name} ? Découvrez notre équipe de kinésithérapeutes diplômés et conventionnés intervenant dans le Grand Charleroi.`}
+  description={`Kinésithérapeute à domicile à ${area.name} (${area.postalCode}). Soins généraux, respiratoires, neurologiques, gériatriques et post-opératoires. Contactez Kinedomicile.`}
 >
-
-  <section class="section">
-
-    <div class="container service-detail">
-
+  <section class="zone-hero">
+    <div class="container zone-hero__inner">
       <span class="eyebrow">
-        Zone d'intervention
+        KINÉSITHÉRAPIE À DOMICILE · {area.postalCode}
       </span>
 
       <h1>
-        Kiné à domicile à {area.name}
+        Votre kiné à domicile
+        <span>à {area.name}</span>
       </h1>
 
-      <p class="lead">
-        Kinedomicile.be propose des soins de
-        kinésithérapie à domicile dans le Grand Charleroi.
+      <p class="zone-hero__lead">
+        Vous recherchez un kinésithérapeute à domicile
+        à {area.name} ? Notre équipe vous accompagne
+        dans votre rééducation et vos soins, directement
+        chez vous, selon les disponibilités.
       </p>
 
-      <p>
-        Nos kinésithérapeutes se déplacent à
-        {area.name} pour accompagner les patients
-        dans leur prise en charge, selon les
-        disponibilités et les indications médicales.
-      </p>
+      <div class="zone-actions">
+        <a href="/contact/" class="btn-primary">
+          Demander un rendez-vous
+        </a>
 
-      <h2>
-        Nos soins à domicile
-      </h2>
+        <a href={`tel:${site.phone}`} class="btn-secondary">
+          Appeler {site.phoneDisplay}
+        </a>
+      </div>
 
-      <p>
-        Nous proposons des prises en charge en
-        kinésithérapie générale, post-opératoire,
-        respiratoire, neurologique et gériatrique,
-        selon les compétences des praticiens.
-      </p>
-
-      <h2>
-        Prendre rendez-vous à {area.name}
-      </h2>
-
-      <p>
-        Contactez notre équipe afin de vérifier
-        la disponibilité d'un kinésithérapeute
-        pour votre commune.
-      </p>
-
-      <a href="/contact/" class="btn-primary">
-        Demander un rendez-vous
-      </a>
-
-      <a
-        href={`tel:${site.phone}`}
-        class="btn-secondary"
-      >
-        Appeler {site.phoneDisplay}
-      </a>
-
+      <div class="zone-hero__details">
+        <span>Kinésithérapeutes conventionnés</span>
+        <span>Interventions à domicile</span>
+        <span>Grand Charleroi</span>
+      </div>
     </div>
-
   </section>
 
+  <section class="zone-section">
+    <div class="container">
+      <div class="zone-section__heading">
+        <span class="eyebrow">NOTRE ACCOMPAGNEMENT</span>
+        <h2>Des soins adaptés à vos besoins</h2>
+        <p>
+          À {area.name}, nous proposons différentes
+          prises en charge de kinésithérapie à domicile,
+          selon les indications médicales et les
+          compétences du praticien.
+        </p>
+      </div>
+
+      <div class="zone-care-grid">
+        {treatments.map((treatment, index) => (
+          <article class="zone-care-card">
+            <span class="zone-care-card__number">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <h3>{treatment.title}</h3>
+            <p>{treatment.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="zone-section zone-section--soft">
+    <div class="container zone-info-grid">
+      <div>
+        <span class="eyebrow">PROCHE DE VOUS</span>
+        <h2>
+          Votre kinésithérapeute
+          se déplace à {area.name}
+        </h2>
+
+        <p>
+          Kinedomicile propose des séances de
+          kinésithérapie à domicile dans le Grand
+          Charleroi, notamment à {area.name}.
+        </p>
+
+        <p>
+          Les soins sont adaptés à votre situation,
+          aux indications médicales et aux
+          compétences du kinésithérapeute.
+        </p>
+      </div>
+
+      <div class="zone-info-card">
+        <h3>Informations pratiques</h3>
+
+        <dl>
+          <div>
+            <dt>Localité</dt>
+            <dd>{area.name}</dd>
+          </div>
+
+          <div>
+            <dt>Code postal</dt>
+            <dd>{area.postalCode}</dd>
+          </div>
+
+          <div>
+            <dt>Disponibilités</dt>
+            <dd>Du lundi au samedi, de 8h à 20h</dd>
+          </div>
+
+          <div>
+            <dt>Prise de rendez-vous</dt>
+            <dd>Téléphone ou formulaire</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="zone-section">
+    <div class="container">
+      <div class="zone-section__heading">
+        <span class="eyebrow">ZONES D'INTERVENTION</span>
+        <h2>Nous intervenons également à proximité</h2>
+        <p>
+          Découvrez les autres localités couvertes
+          par notre équipe dans la région de Charleroi.
+        </p>
+      </div>
+
+      <nav class="zone-links" aria-label="Autres zones d'intervention">
+        {otherAreas.map((item) => (
+          <a href={`/zones/${item.slug}/`}>
+            <span>{item.name}</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        ))}
+      </nav>
+    </div>
+  </section>
+
+  <section class="zone-cta">
+    <div class="container zone-cta__inner">
+      <span class="eyebrow">PRENDRE RENDEZ-VOUS</span>
+
+      <h2>Besoin d'un kiné à domicile à {area.name} ?</h2>
+
+      <p>
+        Contactez-nous pour connaître les possibilités
+        de prise en charge dans votre localité.
+      </p>
+
+      <div class="zone-actions">
+        <a href="/contact/" class="btn-primary">
+          Demander un rendez-vous
+        </a>
+
+        <a href={`tel:${site.phone}`} class="btn-secondary">
+          Nous appeler
+        </a>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
